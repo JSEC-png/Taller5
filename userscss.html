@@ -8,10 +8,10 @@
     <script type="text/javascript" src="js/codigo.js"></script>
 </head>
 <body>
-    <form action="mailto:sebastian.rivera.leon2000@gmail.com">
+    <form action="mailto:sebastian.rivera.leon2000@gmail.com" onsubmit="return validar();">
 <div>
         Identificación de usuario<br>
-        <input type="number" min="0" size="30" required>
+        <input id="id" type="number" min="0" size="30">
     
    
 </div>
@@ -19,9 +19,9 @@
 
 <div>
     Pais<br>
-    <select multiple required>
+    <select multiple>
 
-        <option>Seleccionar</option>
+        <option selected disabled>Seleccionar</option>
         <option>Colombia</option>
         <option>Brasil</option>
         <option>Estados Unidos</option>
@@ -32,7 +32,7 @@
     
 <div>
     Nombre<br>
-    <input id ="prueba" type ="text" size="30" required>
+    <input id ="prueba" type ="text" size="30">
 </div>
 
 <div>
@@ -41,32 +41,34 @@
     
 <div>
     Apellido<br>
-    <input type="text" size="30" required>
-    
+    <input id="apellido" type="text" size="30" onkeypress="return validar2();" onblur="return validar();"> 
+    <div>
+    <label for="apellido" id="label2">ALV</label>
+    </div>
 </div>
 <div>
     Dirección<br>
-    <input type="text" placeholder="Ejemplo : cra 45 #45-45 casa 45" size="40" required>
+    <input id="direccion" type="text" placeholder="Ejemplo : Cra 45 #45-45 casa 45" size="40">
     
 </div>
 <div>
     Nombre de usuario<br>
-    <input type="text" size="30" required>
+    <input id="usuario" type="text" size="30">
     
 </div>
 <div>
     Contraseña<br>
-    <input type="password" size="30" required>
+    <input id="pass" type="password" size="30">
 </div>
     
 <div>
     Email<br>
-    <input type="email" size="40" placeholder="ejemplo@ejemplo.com" required>
+    <input id="email" type="email" size="40" placeholder="ejemplo@ejemplo.com">
 </div>
     
 <div>
     Telefono<br>
-    <input type="number" min="0" size="30"  required>
+    <input id="tel" type="number" min="0" size="30">
     
 </div>
 
