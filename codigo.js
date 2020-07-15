@@ -1,8 +1,25 @@
-function prueba()
+window.onload = function()
 {
-    document.getElementById("pruebahijo").style.display = 'block';
-};
+    var a = document.getElementById('prueba');
+    var b = document.getElementById('pruebahijo');
+    function ocultar()
+    {
+        b.style.display = 'none';                                
+    }
+    
 
+    function mostrar()
+    {
+        b.style.display = 'block';                                
+    }
 
-document.getElementById('prueba').onmousemove = prueba();
+    a.onmouseover = function(){
+        b.style.display = 'none';                                
+    }
+
+    a.onmouseout = function(){
+        b.style.display = 'block';                                
+    }
+
+}
 
