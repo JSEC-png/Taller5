@@ -13,13 +13,27 @@ window.onload = function()
         b.style.display = 'block';                                
     }
 
-    a.onmouseover = function(){
-        b.style.display = 'none';                                
-    }
+    a.onmouseover = ocultar();
+        
 
-    a.onmouseout = function(){
-        b.style.display = 'block';                                
-    }
+    a.onmouseout = mostrar();
+        
 
+    
+    
+    function newFunction() {
+        var e = document.getElementById("correo");
+    
+        e.addEventListener("focus", function () {
+    
+            alert("llene eso");
+        }, true);
+    }
+    
+    
+
+    
 }
+
+
 
