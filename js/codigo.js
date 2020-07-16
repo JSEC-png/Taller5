@@ -64,6 +64,12 @@ function validarDireccion(){
     direccion=document.getElementById("direccion").value;
     labelDireccion=document.getElementById("labelDireccion");
 
+    requisitos1=['cll','cra','av','anv','trans'];
+
+    var validado=validarRequisitos(direccion,requisitos1,1);
+
+
+
         if (direccion.length > 25){
             labelDireccion.innerHTML='Deben ser menos de 25 carácteres';
             labelDireccion.style.display= 'block';
@@ -72,10 +78,58 @@ function validarDireccion(){
             labelDireccion.innerHTML='¡Campo vacío!';
             labelDireccion.style.display='block';
         }
+        else if(validado==false)
+        {
+            labelDireccion.innerHTML='La dirección debe empezar por "cll","cra","av","anv" o "trans"';
+            labelDireccion.style.display='block';
+
+        }
         else{
             labelDireccion.style.display='none';
         };
   
+}
+
+
+function validarRequisitos(palabra,caracter,modo)
+{
+var validado1;
+
+for(var i=0; i<=caracter.length-1;i++ ){
+
+    var res = palabra.match(caracter[i]);
+    
+    
+    if(res != null)
+    {
+        validado=true;
+    }
+    else{
+        validado = false;
+    };
+
+    if(modo == 1)
+    {
+        validado1 = validado1||validado;
+    }
+
+    else
+    {
+        if(validado1 == null)
+        {
+            validado1 = validado && validado;
+        }
+        else{
+            validado1=validado1 && validado;
+        }
+        
+    }
+
+
+}
+
+validado=validado1;
+return validado1;
 }
 
 
@@ -97,30 +151,55 @@ function validarUsuario(){
   
 }
 
-function validarContraseña(){
-    contraseña=document.getElementById("contraseña").value;
-    labelContraseña=document.getElementById("labelContraseña");
+function validarContrasena(){
+    contrasena=document.getElementById("contrasena").value;
+    labelContrasena=document.getElementById("labelContrasena");
 
-        if (contraseña.length > 25){
-            labelContraseña.innerHTML='Deben ser menos de 25 carácteres';
-            labelContraseña.style.display= 'block';
+    requisitos=['#','%','/','&'];
+    validado=validarRequisitos(contrasena,requisitos,2);
+        if (contrasena.length > 25){
+            labelContrasena.innerHTML='Deben ser menos de 25 carácteres';
+            labelContrasena.style.display= 'block';
         }
-        else if (contraseña==""){
-            labelContraseña.innerHTML='¡Campo vacío!';
-            labelContraseña.style.display='block';
+        else if (contrasena==""){
+            labelContrasena.innerHTML='¡Campo vacío!';
+            labelContrasena.style.display='block';
+        }
+        else if(validado==false)
+        {
+            labelContrasena.innerHTML='La contraseña debe tener los caracteres "#","%","/" y "&"';
+            labelContrasena.style.display='block';
+
         }
         else{
-            labelContraseña.style.display='none';
+            labelContrasena.style.display='none';
         };
   
+}
+
+function confirmarContrasena()
+{
+    contrasena=document.getElementById("contrasena").value;
+    confirmacontrasena=document.getElementById("confirmacionContrasena").value;
+    labelContrasenaConf=document.getElementById("labelContrasenaConf");
+
+        if (contrasena != confirmacontrasena){
+            labelContrasenaConf.innerHTML='Las contraseñas no coinciden';
+            labelContrasenaConf.style.display= 'block';
+        }
+        
+        else{
+            labelContrasenaConf.style.display='none';
+        };
+
 }
 
 function validarEmail(){
     email=document.getElementById("email").value;
     labelEmail=document.getElementById("labelEmail");
 
-        if (email.length > 25){
-            labelEmail.innerHTML='Deben ser menos de 25 carácteres';
+        if (email.length > 120){
+            labelEmail.innerHTML='Deben ser menos de 120 carácteres';
             labelEmail.style.display= 'block';
         }
         else if (email==""){
