@@ -11,8 +11,8 @@
     <form action="mailto:sebastian.rivera.leon2000@gmail.com" onsubmit="return validar();">
 <div>
         Identificación de usuario<br>
-        <input id="id" type="number" min="0" size="30">
-    
+        <input id="id" type="number" min="0" size="30" onblur="return validarId();">
+        <label for="id" id="labelId"></label>
    
 </div>
 
@@ -32,48 +32,48 @@
     
 <div>
     Nombre<br>
-    <input id ="prueba" type ="text" size="30">
+    <input id ="nombre" type ="text" size="30" onblur = 'return validarNombre();'>
+    <label for="nombre" id="labelNombre"></label>
 </div>
 
-<div>
-    <h1  id = "pruebahijo">Alexis</h1>
-</div>
     
 <div>
     Apellido<br>
-    <input id="apellido" type="text" size="30" onkeypress="return validar2();" onblur="return validar();"> 
+    <input id="apellido" type="text" size="30"  onblur="return validarApellido();"> 
     <div>
-    <label for="apellido" id="label2">ALV</label>
+    <label for="apellido" id="labelApellido"></label>
     </div>
 </div>
 <div>
     Dirección<br>
-    <input id="direccion" type="text" placeholder="Ejemplo : Cra 45 #45-45 casa 45" size="40">
+    <input id="direccion" type="text" placeholder="Ejemplo : Cra 45 #45-45 casa 45" size="40"
+    onblur="return validarDireccion();">
+    <label for="direccion" id="labelDireccion"></label>    
     
 </div>
 <div>
     Nombre de usuario<br>
-    <input id="usuario" type="text" size="30">
+    <input id="usuario" type="text" size="30" onblur="return validarUsuario();">
+    <label for="usuario" id="labelUsuario"></label>    
     
 </div>
 <div>
     Contraseña<br>
-    <input id="pass" type="password" size="30">
+    <input id="contraseña" type="password" size="30" onblur="return validarContraseña();">
+    <label for="contraseña" id="labelContraseña"></label>    
 </div>
     
 <div >
     Email<br>
-<<<<<<< HEAD
-    <input id="email" type="email" size="40" placeholder="ejemplo@ejemplo.com">
-=======
-    <input type="email" id="correo" size="40" placeholder="ejemplo@ejemplo.com" required>
->>>>>>> master
+    <input id="email" type="email" size="40" placeholder="ejemplo@ejemplo.com"
+    onblur="return validarEmail();">
+    <label for="email" id="labelEmail"></label>    
 </div>
     
 <div>
     Telefono<br>
-    <input id="tel" type="number" min="0" size="30">
-    
+    <input id="tel" type="number" min="0" size="30" onblur="return validarTel();">
+    <label for="tel" id="labelTel"></label>    
 </div>
 
 <button type="submit">Registro</button>
