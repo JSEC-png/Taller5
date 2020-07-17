@@ -92,21 +92,22 @@ Seleccione su color favorito<br>
 </div>
 <div>
 Escriba su marca de carro favorita<br>
-<input type="text">
+<input type="text" size="40">
 </div>
 <div>
 Escriba su estilo de carro favorito<br>
-<input type="text">
+<input type="text" size="40">
 </div>
 <div>
 Escriba su modelo de carro favorito<br>
-<input type="text">
+<input type="text" size="40">
 </div>
 
 <div>
     Seleccione el valor que está dispuesto a invertir en un automovil<br>
   
-    <input type="range">
+    <input type="range" id="valor" oninput="ponervalor();" min="0" max="500000000" step="1000000">
+    <label for="valor" id="labelvalor"></label>
 </div>
 </div>
 </div>

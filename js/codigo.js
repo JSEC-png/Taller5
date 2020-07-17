@@ -356,3 +356,11 @@ function listaGustos()
 }
 
 
+ function ponervalor()
+        {
+            var valor = document.getElementById("valor");
+            var labelvalor = document.getElementById("labelvalor");
+            labelvalor.style.display='block';
+            labelvalor.innerHTML = '$' + valor.value;
+            
+        }
