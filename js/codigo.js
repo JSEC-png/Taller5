@@ -45,7 +45,8 @@ function validarNombre(){
 function validarId(){
     id=document.getElementById("id").value;
     labelId=document.getElementById("labelId");
-
+    id=id.toString();
+    p=id.match(/\./);
         if (id.length > 25){
             labelId.innerHTML='Deben ser menos de 25 carácteres';
             labelId.style.display= 'block';
@@ -53,8 +54,10 @@ function validarId(){
         else if (id==""){
             labelId.innerHTML='¡Campo vacío!';
             labelId.style.display='block';
-        }
-        else{
+        }else if(p!=null){
+            labelId.innerHTML='Solo se aceptan números enteros';
+            labelId.style.display='block';
+        }        else{
             labelId.style.display='none';
         };
   
@@ -136,13 +139,16 @@ return validado1;
 function validarUsuario(){
     usuario=document.getElementById("usuario").value;
     labelUsuario=document.getElementById("labelUsuario");
-
+    res=usuario.match(/[!#$%&/()=?¡¿*-+:;.,@|·ºª¬><-_']/);
         if (usuario.length > 25){
             labelUsuario.innerHTML='Deben ser menos de 25 carácteres';
             labelUsuario.style.display= 'block';
         }
         else if (usuario==""){
             labelUsuario.innerHTML='¡Campo vacío!';
+            labelUsuario.style.display='block';
+        }else if (res!=null){
+            labelUsuario.innerHTML='Solo se aceptan carácteres alfanúmericos';
             labelUsuario.style.display='block';
         }
         else{
@@ -157,6 +163,9 @@ function validarContrasena(){
 
     requisitos=['#','%','/','&'];
     validado=validarRequisitos(contrasena,requisitos,2);
+    val=UpLow(contrasena);
+    vali=num(contrasena);
+
         if (contrasena.length > 25){
             labelContrasena.innerHTML='Deben ser menos de 25 carácteres';
             labelContrasena.style.display= 'block';
@@ -165,9 +174,60 @@ function validarContrasena(){
             labelContrasena.innerHTML='¡Campo vacío!';
             labelContrasena.style.display='block';
         }
-        else if(validado==false)
+        else if(validado==false && val[1]==false && vali==false)
         {
-            labelContrasena.innerHTML='La contraseña debe tener los caracteres "#","%","/" y "&"';
+            labelContrasena.innerHTML='La contraseña debe tener mayúsculas, números y los caracteres "#","%","/" y "&"';
+            labelContrasena.style.display='block';
+
+        }else if(validado==false && val[0]==false && vali==false){
+
+            labelContrasena.innerHTML='La contraseña debe tener minúsculas, números y los caracteres "#","%","/" y "&"';
+            labelContrasena.style.display='block';
+
+        }
+        else if(val[0]==false && vali==false){
+            
+            labelContrasena.innerHTML='La contraseña debe tener minúsculas y números';
+            labelContrasena.style.display='block';
+
+        }
+        else if(val[1]==false && vali==false){
+            
+            labelContrasena.innerHTML='La contraseña debe tener mayúsculas y números';
+            labelContrasena.style.display='block';
+
+        }else if(validado==false && vali==false){
+            
+            labelContrasena.innerHTML='La contraseña debe tener números y los caracteres "#","%","/" y "&"';
+            labelContrasena.style.display='block';
+
+        }else if(validado==false && val[0]==false){
+            
+            labelContrasena.innerHTML='La contraseña debe tener minúsculas y los caracteres "#","%","/" y "&"';
+            labelContrasena.style.display='block';
+
+        }
+        else if(validado==false && val[1]==false){
+            
+            labelContrasena.innerHTML='La contraseña debe tener mayúsculas y los caracteres "#","%","/" y "&"';
+            labelContrasena.style.display='block';
+
+        }
+        else if(vali==false){
+            
+            labelContrasena.innerHTML='La contraseña debe tener números';
+            labelContrasena.style.display='block';
+
+        }else if(val[1]==false){
+            labelContrasena.innerHTML='La contraseña debe contener mayúsculas';
+            labelContrasena.style.display='block';
+        }
+        else if(val[0]==false){
+            labelContrasena.innerHTML='La contraseña debe contener minúsculas';
+            labelContrasena.style.display='block';
+
+        }else if(validado==false){
+            labelContrasena.innerHTML='La contraseña debe los caracteres "#","%","/" y "&"';
             labelContrasena.style.display='block';
 
         }
@@ -176,6 +236,36 @@ function validarContrasena(){
         };
   
 }
+
+function UpLow(palabra){
+    str=palabra;
+    val1=false;
+    val2=false;
+    for(var i=0; i<=palabra.length-1;i++ ){
+        if (str.charAt(i).toUpperCase() != palabra.charAt(i))
+        {
+            val1=true;
+        }
+        if (str.charAt(i).toLowerCase() != palabra.charAt(i))
+        {
+            val2=true;
+        }
+    }
+    val= [val1,val2];
+    return val
+
+}
+
+function num(palabra){
+    var res = null;
+    vali= false;
+    res=palabra.match(/\d/);
+    if (res !=null ){
+        vali=true;
+    }
+    return vali;
+}
+
 
 function confirmarContrasena()
 {
