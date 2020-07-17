@@ -187,6 +187,17 @@ function validarContrasena(){
             labelContrasena.style.display='block';
 
         }
+        else if(validado==false && val[0]==false && val[1]==false){
+
+            labelContrasena.innerHTML='La contraseña debe tener minúsculas, mayúsculas y los caracteres "#","%","/" y "&"';
+            labelContrasena.style.display='block';
+
+        }else if(vali==false && val[0]==false && vali==false){
+
+            labelContrasena.innerHTML='La contraseña debe tener minúsculas, mayúsculas y los caracteres "#","%","/" y "&"';
+            labelContrasena.style.display='block';
+
+        }
         else if(val[0]==false && vali==false){
             
             labelContrasena.innerHTML='La contraseña debe tener minúsculas y números';
@@ -214,8 +225,12 @@ function validarContrasena(){
             labelContrasena.innerHTML='La contraseña debe tener mayúsculas y los caracteres "#","%","/" y "&"';
             labelContrasena.style.display='block';
 
-        }
-        else if(vali==false){
+        }else if(val[0]==false && val[1]==false){
+
+            labelContrasena.innerHTML='La contraseña debe tener minúsculas y mayúsculas';
+            labelContrasena.style.display='block';
+
+        }else if(vali==false){
             
             labelContrasena.innerHTML='La contraseña debe tener números';
             labelContrasena.style.display='block';
