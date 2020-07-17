@@ -75,6 +75,9 @@ animation-delay: 1s;
     color: rgba(112, 128, 144, 0.527);
 }
 
-#pruebahijo{
-    display: block;
+
+#listargustos
+{
+
+    display: none;
 }

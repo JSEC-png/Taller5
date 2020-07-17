@@ -42,6 +42,8 @@ function validarNombre(){
   
 }
 
+
+
 function validarId(){
     id=document.getElementById("id").value;
     labelId=document.getElementById("labelId");
@@ -321,19 +323,21 @@ function validarTel(){
   
 }
 
+function listaGustos()
+{
 
+    gustos=document.getElementById("gustos").value;
+    lista=document.getElementById("listargustos");
 
-// function validar(){
-//     apellido=document.getElementById("apellido").value;
-//     labelNombre=document.getElementById("labelNombre");
-//     if (apellido==""){
-//         labelNombre.innerHTML='¡Campo vacío!';
-//         labelNombre.style.display='block';
-//     }
-//     else{
-//         labelNombre.style.display='none';
-//     };
+    if(gustos != null)
+    {
+        lista.style.display= 'block';
+    }
 
-//}
+    else
+    {
+        lista.style.display= 'none';
+    }
+}
 
 
