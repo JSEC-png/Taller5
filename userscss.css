@@ -70,7 +70,8 @@ button
     cursor: pointer;
     transition: all 0.8s;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-font-size: 18px;
+    font-size: 18px;    
+
 
 }
 
@@ -108,3 +109,9 @@ animation-delay: 1s;
 #valor
 {width: 600px;}
 
+#color
+{
+    margin-left: 50px;
+    width: 100px;
+    height: 100px;
+}

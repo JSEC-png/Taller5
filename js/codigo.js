@@ -1,5 +1,42 @@
+
+function validarFormulario()
+{
+    alerta=document.getElementById("alerta");
+    formulario=document.getElementById("formulario");
+    boton=document.getElementById("registro");
+validado1=validarId();
+validado2=validarNombre();
+validado3=validarApellido();
+validado4=validarDireccion();
+validado5=validarUsuario();
+validado6=validarContrasena();
+validado7=confirmarContrasena();
+validado8=validarEmail();
+validado9=validarTel();
+
+validado=validado1&&validado2&&validado3&&validado4&&validado5;
+validado_2=validado6&&validado7&&validado8&&validado9;
+
+FormularioVal=validado&&validado_2;
+
+if(!FormularioVal)
+{
+    
+    alerta.innerHTML="Faltan campos por ser completados";
+    alerta.style.display='block';
+    boton.type = 'button';
+}
+else{
+    alerta.style.display='none';
+    boton.type = 'submit'
+    formulario.action = "mailto:sebastian.rivera.leon2000@gmail.com";
+}
+}
+
+
 function validarCampo(campo,labelCampo,longitud)
 {
+    campoValidado=false;
     if (campo.length > longitud){
         labelCampo.innerHTML='Deben ser menos de ' +longitud+ ' carácteres';
         labelCampo.style.display= 'block';
@@ -10,14 +47,19 @@ function validarCampo(campo,labelCampo,longitud)
     }
     else{
         labelCampo.style.display='none';
+        campoValidado=true;
     };
+
+    return campoValidado;
 }
 
 function validarApellido(){
     apellido=document.getElementById("apellido").value;
     labelApellido=document.getElementById("labelApellido");
 
-       validarCampo(apellido,labelApellido,25);
+       validado=validarCampo(apellido,labelApellido,25);
+
+       return validado;
   
 }
 
@@ -26,7 +68,9 @@ function validarNombre(){
     nombre=document.getElementById("nombre").value;
     labelNombre=document.getElementById("labelNombre");
 
-    validarCampo(nombre,labelNombre,25);
+    validado=validarCampo(nombre,labelNombre,25);
+
+    return validado;
   
 }
 
@@ -37,14 +81,17 @@ function validarId(){
     labelId=document.getElementById("labelId");
     id=id.toString();
     p=id.match(/\./);
-      
+      validado=false;
         if(p!=null){
             labelId.innerHTML='Solo se aceptan números enteros';
             labelId.style.display='block';
+            
         }       
         else{
-            validarCampo(id,labelId,25);
+            validado=validarCampo(id,labelId,25);
         }
+
+        return validado;
   
 }
 
@@ -64,9 +111,10 @@ function validarDireccion(){
 
         }
         else{
-            validarCampo(direccion,labelDireccion,25);
+            validado=validarCampo(direccion,labelDireccion,25);
         };
   
+        return validado;
 }
 
 
@@ -116,16 +164,21 @@ function validarUsuario(){
     usuario=document.getElementById("usuario").value;
     labelUsuario=document.getElementById("labelUsuario");
     res=usuario.match(/[!#$%&/()=?¡¿*-+:;.,@|·ºª¬><-_']/);
-        
+        validado=false;
     
         if (res!=null){
             labelUsuario.innerHTML='Solo se aceptan carácteres alfanúmericos';
             labelUsuario.style.display='block';
         }
+        else if(usuario.length<10)
+        {
+            labelUsuario.innerHTML='El nombre de usuario debe tener más de 10 caracteres';
+            labelUsuario.style.display='block';
+        }
         else{
-            validarCampo(usuario,labelUsuario,25);;
+            validado=validarCampo(usuario,labelUsuario,20);
         };
-  
+  return validado;
 }
 
 function validarContrasena(){
@@ -136,7 +189,7 @@ function validarContrasena(){
     validado=validarRequisitos(contrasena,requisitos,2);
     val=UpLow(contrasena);
     vali=num(contrasena);
-
+    contraVal=false;
         if (contrasena.length > 25){
             labelContrasena.innerHTML='Deben ser menos de 25 carácteres';
             labelContrasena.style.display= 'block';
@@ -219,8 +272,9 @@ function validarContrasena(){
         }
         else{
             labelContrasena.style.display='none';
+            contraVal=true;
         };
-  
+  return contraVal;
 }
 
 function UpLow(palabra){
@@ -262,11 +316,15 @@ function confirmarContrasena()
         if (contrasena != confirmacontrasena){
             labelContrasenaConf.innerHTML='Las contraseñas no coinciden';
             labelContrasenaConf.style.display= 'block';
+            validado=false;
         }
         
         else{
             labelContrasenaConf.style.display='none';
+            validado=true;
         };
+
+        return validado;
 
 }
 
@@ -274,7 +332,8 @@ function validarEmail(){
     email=document.getElementById("email").value;
     labelEmail=document.getElementById("labelEmail");
 
-    validarCampo(email,labelEmail,120);
+    validado=validarCampo(email,labelEmail,120);
+    return validado;
   
 }
 
@@ -283,8 +342,8 @@ function validarTel(){
     tel=document.getElementById("tel").value;
     labelTel=document.getElementById("labelTel");
 
-    validarCampo(tel,labelTel,25);
-  
+    validado=validarCampo(tel,labelTel,25);
+  return validado;
 }
 
 function listaGustos()

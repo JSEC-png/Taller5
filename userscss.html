@@ -8,7 +8,7 @@
     <script type="text/javascript" src="js/codigo.js"></script>
 </head>
 <body>
-    <form action="mailto:sebastian.rivera.leon2000@gmail.com" onsubmit="return validar();">
+    <form action="" id="formulario" >
 <div>
         Identificación de usuario<br>
         <input id="id" type="number" min="0" size="30" onblur="return validarId();">
@@ -18,7 +18,7 @@
 
 
 <div>
-    Pais<br>
+    País<br>
     <select multiple>
 
         <option selected disabled>Seleccionar</option>
@@ -88,7 +88,7 @@
 
     <div>
 Seleccione su color favorito<br>
-<input type="color">
+<input id="color" type="color">
 </div>
 <div>
 Escriba su marca de carro favorita<br>
@@ -104,7 +104,7 @@ Escriba su modelo de carro favorito<br>
 </div>
 
 <div>
-    Seleccione el valor que está dispuesto a invertir en un automovil<br>
+    Seleccione el valor que está dispuesto a invertir en un automóvil<br>
   
     <input type="range" id="valor" oninput="ponervalor();" min="0" max="500000000" step="1000000">
     <label for="valor" id="labelvalor"></label>
@@ -113,8 +113,8 @@ Escriba su modelo de carro favorito<br>
 </div>
 
 
-<button type="submit">Registro</button>
-
+<button type="submit" id="registro" onclick="return validarFormulario();">Registro</button>
+<label for="alerta" id="alerta"></label>
     </form>
 </body>
 </html>
