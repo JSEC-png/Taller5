@@ -1,44 +1,32 @@
-var nombre, apellido, direccion, usuario, pass, email, tel,labelNombre;
-    nombre=document.getElementById("prueba").value;
-    direccion=document.getElementById("direccion").value;
-    usuario=document.getElementById("usuario").value;
-    pass=document.getElementById("pass").value;
-    email=document.getElementById("email").value;
-    tel=document.getElementById("tel").value;
+function validarCampo(campo,labelCampo,longitud)
+{
+    if (campo.length > longitud){
+        labelCampo.innerHTML='Deben ser menos de ' +longitud+ ' carácteres';
+        labelCampo.style.display= 'block';
+    }
+    else if (campo==""){
+        labelCampo.innerHTML='¡Campo vacío!';
+        labelCampo.style.display='block';
+    }
+    else{
+        labelCampo.style.display='none';
+    };
+}
 
 function validarApellido(){
     apellido=document.getElementById("apellido").value;
     labelApellido=document.getElementById("labelApellido");
 
-        if (apellido.length > 25){
-            labelApellido.innerHTML='Deben ser menos de 25 carácteres';
-            labelApellido.style.display= 'block';
-        }
-        else if (apellido==""){
-            labelApellido.innerHTML='¡Campo vacío!';
-            labelApellido.style.display='block';
-        }
-        else{
-            labelApellido.style.display='none';
-        };
+       validarCampo(apellido,labelApellido,25);
   
 }
 
+
 function validarNombre(){
-    apellido=document.getElementById("nombre").value;
+    nombre=document.getElementById("nombre").value;
     labelNombre=document.getElementById("labelNombre");
 
-        if (apellido.length > 25){
-            labelNombre.innerHTML='Deben ser menos de 25 carácteres';
-            labelNombre.style.display= 'block';
-        }
-        else if (apellido==""){
-            labelNombre.innerHTML='¡Campo vacío!';
-            labelNombre.style.display='block';
-        }
-        else{
-            labelNombre.style.display='none';
-        };
+    validarCampo(nombre,labelNombre,25);
   
 }
 
@@ -49,19 +37,14 @@ function validarId(){
     labelId=document.getElementById("labelId");
     id=id.toString();
     p=id.match(/\./);
-        if (id.length > 25){
-            labelId.innerHTML='Deben ser menos de 25 carácteres';
-            labelId.style.display= 'block';
-        }
-        else if (id==""){
-            labelId.innerHTML='¡Campo vacío!';
-            labelId.style.display='block';
-        }else if(p!=null){
+      
+        if(p!=null){
             labelId.innerHTML='Solo se aceptan números enteros';
             labelId.style.display='block';
-        }        else{
-            labelId.style.display='none';
-        };
+        }       
+        else{
+            validarCampo(id,labelId,25);
+        }
   
 }
 
@@ -73,24 +56,15 @@ function validarDireccion(){
 
     var validado=validarRequisitos(direccion,requisitos1,1);
 
-
-
-        if (direccion.length > 25){
-            labelDireccion.innerHTML='Deben ser menos de 25 carácteres';
-            labelDireccion.style.display= 'block';
-        }
-        else if (direccion==""){
-            labelDireccion.innerHTML='¡Campo vacío!';
-            labelDireccion.style.display='block';
-        }
-        else if(validado==false)
+          
+        if(validado==false)
         {
             labelDireccion.innerHTML='La dirección debe empezar por "cll","cra","av","anv" o "trans"';
             labelDireccion.style.display='block';
 
         }
         else{
-            labelDireccion.style.display='none';
+            validarCampo(direccion,labelDireccion,25);
         };
   
 }
@@ -142,19 +116,14 @@ function validarUsuario(){
     usuario=document.getElementById("usuario").value;
     labelUsuario=document.getElementById("labelUsuario");
     res=usuario.match(/[!#$%&/()=?¡¿*-+:;.,@|·ºª¬><-_']/);
-        if (usuario.length > 25){
-            labelUsuario.innerHTML='Deben ser menos de 25 carácteres';
-            labelUsuario.style.display= 'block';
-        }
-        else if (usuario==""){
-            labelUsuario.innerHTML='¡Campo vacío!';
-            labelUsuario.style.display='block';
-        }else if (res!=null){
+        
+    
+        if (res!=null){
             labelUsuario.innerHTML='Solo se aceptan carácteres alfanúmericos';
             labelUsuario.style.display='block';
         }
         else{
-            labelUsuario.style.display='none';
+            validarCampo(usuario,labelUsuario,25);;
         };
   
 }
@@ -305,17 +274,7 @@ function validarEmail(){
     email=document.getElementById("email").value;
     labelEmail=document.getElementById("labelEmail");
 
-        if (email.length > 120){
-            labelEmail.innerHTML='Deben ser menos de 120 carácteres';
-            labelEmail.style.display= 'block';
-        }
-        else if (email==""){
-            labelEmail.innerHTML='¡Campo vacío!';
-            labelEmail.style.display='block';
-        }
-        else{
-            labelEmail.style.display='none';
-        };
+    validarCampo(email,labelEmail,120);
   
 }
 
@@ -324,17 +283,7 @@ function validarTel(){
     tel=document.getElementById("tel").value;
     labelTel=document.getElementById("labelTel");
 
-        if (tel.length > 25){
-            labelTel.innerHTML='Deben ser menos de 25 carácteres';
-            labelTel.style.display= 'block';
-        }
-        else if (tel==""){
-            labelTel.innerHTML='¡Campo vacío!';
-            labelTel.style.display='block';
-        }
-        else{
-            labelTel.style.display='none';
-        };
+    validarCampo(tel,labelTel,25);
   
 }
 
