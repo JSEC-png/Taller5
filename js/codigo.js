@@ -88,7 +88,7 @@ function validarId(){
             
         }       
         else{
-            validado=validarCampo(id,labelId,25);
+            validado=validarCampo(id,labelId,11);
         }
 
         return validado;
@@ -161,12 +161,14 @@ return validado1;
 
 
 function validarUsuario(){
+    res=null;
     usuario=document.getElementById("usuario").value;
     labelUsuario=document.getElementById("labelUsuario");
-    res=usuario.match(/[!#$%&/()=?¡¿*-+:;.,@|·ºª¬><-_']/);
+    res=usuario.match(/[!"·$%&/()|@#~€¬/*+.`+ç´^*Ç¨]/);
+ 
         validado=false;
     
-        if (res!=null){
+        if (res!=null) {
             labelUsuario.innerHTML='Solo se aceptan carácteres alfanúmericos';
             labelUsuario.style.display='block';
         }
@@ -182,9 +184,14 @@ function validarUsuario(){
 }
 
 function validarContrasena(){
+    var M,m,r,c,n;
     contrasena=document.getElementById("contrasena").value;
     labelContrasena=document.getElementById("labelContrasena");
-
+    M='mayúsculas'
+    m='minúsculas'
+    r='La contraseña debe contener '
+    c='los caracteres "#","%","/" y "&"'
+    n='números'
     requisitos=['#','%','/','&'];
     validado=validarRequisitos(contrasena,requisitos,2);
     val=UpLow(contrasena);
@@ -198,77 +205,58 @@ function validarContrasena(){
             labelContrasena.innerHTML='¡Campo vacío!';
             labelContrasena.style.display='block';
         }
+        else if (contrasena.length < 15){
+            labelContrasena.innerHTML='Deben ser al menos 15 carácteres';
+            labelContrasena.style.display='block';
+        }
         else if(validado==false && val[1]==false && vali==false)
         {
-            labelContrasena.innerHTML='La contraseña debe tener mayúsculas, números y los caracteres "#","%","/" y "&"';
+            labelContrasena.innerHTML=r+M+', '+n+' y '+c;
             labelContrasena.style.display='block';
-
         }else if(validado==false && val[0]==false && vali==false){
-
-            labelContrasena.innerHTML='La contraseña debe tener minúsculas, números y los caracteres "#","%","/" y "&"';
+            labelContrasena.innerHTML=r+m+', '+n+' y '+c;
             labelContrasena.style.display='block';
-
         }
         else if(validado==false && val[0]==false && val[1]==false){
-
-            labelContrasena.innerHTML='La contraseña debe tener minúsculas, mayúsculas y los caracteres "#","%","/" y "&"';
+            labelContrasena.innerHTML=r+m+', '+M+' y '+c;
             labelContrasena.style.display='block';
-
-        }else if(vali==false && val[0]==false && vali==false){
-
-            labelContrasena.innerHTML='La contraseña debe tener minúsculas, mayúsculas y los caracteres "#","%","/" y "&"';
+        }else if(vali==false && val[0]==false && val[1]==false){
+            labelContrasena.innerHTML=r+m+', '+M+' y '+n;
             labelContrasena.style.display='block';
-
         }
         else if(val[0]==false && vali==false){
-            
-            labelContrasena.innerHTML='La contraseña debe tener minúsculas y números';
+            labelContrasena.innerHTML=r+m+' y '+n;
             labelContrasena.style.display='block';
-
         }
-        else if(val[1]==false && vali==false){
-            
-            labelContrasena.innerHTML='La contraseña debe tener mayúsculas y números';
+        else if(val[1]==false && vali==false){ 
+            labelContrasena.innerHTML=r+M+' y '+n;
             labelContrasena.style.display='block';
-
-        }else if(validado==false && vali==false){
-            
-            labelContrasena.innerHTML='La contraseña debe tener números y los caracteres "#","%","/" y "&"';
+        }else if(validado==false && vali==false){     
+            labelContrasena.innerHTML=r+n+' y '+c;
             labelContrasena.style.display='block';
-
-        }else if(validado==false && val[0]==false){
-            
-            labelContrasena.innerHTML='La contraseña debe tener minúsculas y los caracteres "#","%","/" y "&"';
+        }else if(validado==false && val[0]==false){        
+            labelContrasena.innerHTML=r+m+' y '+c;
             labelContrasena.style.display='block';
-
         }
-        else if(validado==false && val[1]==false){
-            
-            labelContrasena.innerHTML='La contraseña debe tener mayúsculas y los caracteres "#","%","/" y "&"';
+        else if(validado==false && val[1]==false){           
+            labelContrasena.innerHTML=r+M+' y '+c;
             labelContrasena.style.display='block';
-
         }else if(val[0]==false && val[1]==false){
-
-            labelContrasena.innerHTML='La contraseña debe tener minúsculas y mayúsculas';
+            labelContrasena.innerHTML=r+M+' y '+m;
             labelContrasena.style.display='block';
-
-        }else if(vali==false){
-            
-            labelContrasena.innerHTML='La contraseña debe tener números';
+        }else if(vali==false){            
+            labelContrasena.innerHTML=r+n;;
             labelContrasena.style.display='block';
-
         }else if(val[1]==false){
-            labelContrasena.innerHTML='La contraseña debe contener mayúsculas';
+            labelContrasena.innerHTML=r+M;
             labelContrasena.style.display='block';
         }
         else if(val[0]==false){
-            labelContrasena.innerHTML='La contraseña debe contener minúsculas';
+            labelContrasena.innerHTML=r+m;
             labelContrasena.style.display='block';
-
         }else if(validado==false){
-            labelContrasena.innerHTML='La contraseña debe los caracteres "#","%","/" y "&"';
+            labelContrasena.innerHTML=r+c;
             labelContrasena.style.display='block';
-
         }
         else{
             labelContrasena.style.display='none';
