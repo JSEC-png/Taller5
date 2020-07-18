@@ -174,7 +174,7 @@ function validarUsuario(){
         }
         else if(usuario.length<10)
         {
-            labelUsuario.innerHTML='El nombre de usuario debe tener más de 10 caracteres';
+            labelUsuario.innerHTML='El nombre de usuario debe tener mínimo 10 caracteres';
             labelUsuario.style.display='block';
         }
         else{
