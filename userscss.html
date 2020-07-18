@@ -102,15 +102,36 @@ Escriba su estilo de carro favorito<br>
 Escriba su modelo de carro favorito<br>
 <input type="text" size="40">
 </div>
+<div>Seleccione el rango del valor que está dispuesto a invertir en un automóvil<br></div>
 
-<div>
-    Seleccione el valor que está dispuesto a invertir en un automóvil<br>
-  
-    <input type="range" id="valor" oninput="ponervalor();" min="0" max="500000000" step="1000000">
-    <label for="valor" id="labelvalor"></label>
+
+<div class="middle">
+    <div class="multi-range-slider">
+        
+    
+        <input type="range" id="input-left" oninput="ponervalor();" min="0" max="500000000" step="1000000" 
+        value = '125000000'>
+        <input type="range" id="input-right" oninput="ponervalor2();" min="0" max="500000000" step="1000000"
+        value="375000000">
+        
+
+        <div class="slider">
+            <div class="track"></div>
+            <div class="range"></div>
+            <div class="thumb left"></div>
+            <div class="thumb right"></div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
+
+<label id="costo-minimo">El costo mínimo que está dispuesto a invertir es de</label>    
+<label for="input-left" id="labelvalor"></label>
+
+<label id = "costo-maximo">El costo máximo que está dispuesto a invertir es de</label>
+<label for="input-right" id="labelvalor2"></label>
+
+
 
 
 <button type="submit" id="registro" onclick="return validarFormulario();">Registro</button>

@@ -4,33 +4,33 @@ function validarFormulario()
     alerta=document.getElementById("alerta");
     formulario=document.getElementById("formulario");
     boton=document.getElementById("registro");
-validado1=validarId();
-validado2=validarNombre();
-validado3=validarApellido();
-validado4=validarDireccion();
-validado5=validarUsuario();
-validado6=validarContrasena();
-validado7=confirmarContrasena();
-validado8=validarEmail();
-validado9=validarTel();
+    validado1=validarId();
+    validado2=validarNombre();
+    validado3=validarApellido();
+    validado4=validarDireccion();
+    validado5=validarUsuario();
+    validado6=validarContrasena();
+    validado7=confirmarContrasena();
+    validado8=validarEmail();
+    validado9=validarTel();
 
-validado=validado1&&validado2&&validado3&&validado4&&validado5;
-validado_2=validado6&&validado7&&validado8&&validado9;
+    validado=validado1&&validado2&&validado3&&validado4&&validado5;
+    validado_2=validado6&&validado7&&validado8&&validado9;
 
-FormularioVal=validado&&validado_2;
+    FormularioVal=validado&&validado_2;
 
-if(!FormularioVal)
-{
-    
-    alerta.innerHTML="Faltan campos por ser completados";
-    alerta.style.display='block';
-    boton.type = 'button';
-}
-else{
-    alerta.style.display='none';
-    boton.type = 'submit'
-    formulario.action = "mailto:sebastian.rivera.leon2000@gmail.com";
-}
+    if(!FormularioVal)
+    {
+        
+        alerta.innerHTML="Faltan campos por ser completados";
+        alerta.style.display='block';
+        boton.type = 'button';
+    }
+    else{
+        alerta.style.display='none';
+        boton.type = 'submit'
+        formulario.action = "mailto:sebastian.rivera.leon2000@gmail.com";
+    }
 }
 
 
@@ -81,7 +81,7 @@ function validarId(){
     labelId=document.getElementById("labelId");
     id=id.toString();
     p=id.match(/\./);
-      validado=false;
+    validado=false;
         if(p!=null){
             labelId.innerHTML='Solo se aceptan números enteros';
             labelId.style.display='block';
@@ -365,10 +365,100 @@ function listaGustos()
 
 
  function ponervalor()
-        {
-            var valor = document.getElementById("valor");
-            var labelvalor = document.getElementById("labelvalor");
-            labelvalor.style.display='block';
-            labelvalor.innerHTML = '$' + valor.value;
-            
-        }
+{
+    var valor = document.getElementById("input-left");
+    var labelvalor = document.getElementById("labelvalor");
+    labelvalor.style.display='block';
+    labelvalor.innerHTML = '$' + valor.value;
+    document.getElementById('costo-minimo').style.display= 'block';
+    
+}
+
+function ponervalor2()
+{
+    var valor = document.getElementById("input-right");
+    var labelvalor = document.getElementById("labelvalor2");
+    labelvalor.style.display='block';
+    labelvalor.innerHTML = '$' + valor.value;
+    document.getElementById('costo-maximo').style.display= 'block';
+    
+}
+
+
+window.onload = function()
+{
+    var inputLeft = document.getElementById("input-left");
+    var inputRight = document.getElementById("input-right");
+
+    var thumbLeft = document.querySelector(".slider > .thumb.left");
+    var thumbRight = document.querySelector(".slider > .thumb.right");
+    var range = document.querySelector(".slider > .range");
+
+function setLeftValue() {
+	var _this = inputLeft,
+		min = parseInt(_this.min),
+		max = parseInt(_this.max);
+
+	_this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
+
+	var percent = ((_this.value - min) / (max - min)) * 100;
+
+	thumbLeft.style.left = percent + "%";
+	range.style.left = percent + "%";
+}
+
+setLeftValue();
+
+function setRightValue() {
+	var _this = inputRight,
+		min = parseInt(_this.min),
+		max = parseInt(_this.max);
+
+	_this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+
+	var percent = ((_this.value - min) / (max - min)) * 100;
+
+	thumbRight.style.right = (100 - percent) + "%";
+	range.style.right = (100 - percent) + "%";
+}
+setRightValue();
+
+inputLeft.addEventListener("input", setLeftValue);
+inputRight.addEventListener("input", setRightValue);
+
+inputLeft.addEventListener("mouseover", function() {
+	thumbLeft.classList.add("hover");
+});
+inputLeft.addEventListener("mouseout", function() {
+	thumbLeft.classList.remove("hover");
+});
+inputLeft.addEventListener("mousedown", function() {
+	thumbLeft.classList.add("active");
+});
+inputLeft.addEventListener("mouseup", function() {
+	thumbLeft.classList.remove("active");
+});
+
+inputRight.addEventListener("mouseover", function() {
+	thumbRight.classList.add("hover");
+});
+inputRight.addEventListener("mouseout", function() {
+	thumbRight.classList.remove("hover");
+});
+inputRight.addEventListener("mousedown", function() {
+	thumbRight.classList.add("active");
+});
+inputRight.addEventListener("mouseup", function() {
+	thumbRight.classList.remove("active");
+});
+}
+
+
+
+
+
+
+
+
+
+
